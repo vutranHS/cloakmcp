@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "cloakbrowser": {
+      "command": "node",
+      "args": [
+        ".claude/mcp/cloakbrowser/server.mjs"
+      ]
+    }
+  }
+}
