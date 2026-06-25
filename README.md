@@ -171,6 +171,36 @@ If project approval gets stuck:
 claude mcp reset-project-choices
 ```
 
+## Required companion skill
+
+This MCP is designed to be used together with its Claude Code skill. The skill is a must-have, not optional.
+
+The MCP server exposes the raw browser-reading tool. The skill tells Claude when to use that tool, how to handle blocked `WebFetch` pages, and how to rewrite Reddit URLs.
+
+Install both:
+
+- MCP server: `cloakbrowser`
+- Skill: `fetch-article`
+
+The skill lives at:
+
+```text
+.claude/skills/fetch-article/SKILL.md
+```
+
+The skill contains special handling for Reddit links:
+
+- If the URL is on `reddit.com` or `www.reddit.com`, Claude should rewrite it to `old.reddit.com` before fetching.
+- This improves extraction for public Reddit posts/comments because the old Reddit layout is lighter and easier to read.
+- Install this skill globally too when using `--scope user`, otherwise the MCP tool will exist but Claude may not know the Reddit rewrite rule.
+
+Global skill install paths:
+
+```text
+macOS/Linux: ~/.claude/skills/fetch-article/SKILL.md
+Windows:     %USERPROFILE%\.claude\skills\fetch-article\SKILL.md
+```
+
 ## First real use
 
 Ask Claude Code to read a public page that `WebFetch` cannot access. Claude should call:
