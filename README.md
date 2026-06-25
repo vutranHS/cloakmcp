@@ -1,4 +1,11 @@
-# CloakBrowser MCP setup
+# CloakBrowser MCP
+
+[![GitHub stars](https://img.shields.io/github/stars/vutranHS/cloakmcp?style=flat-square)](https://github.com/vutranHS/cloakmcp/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/vutranHS/cloakmcp?style=flat-square)](https://github.com/vutranHS/cloakmcp/forks)
+[![GitHub issues](https://img.shields.io/github/issues/vutranHS/cloakmcp?style=flat-square)](https://github.com/vutranHS/cloakmcp/issues)
+[![GitHub repo size](https://img.shields.io/github/repo-size/vutranHS/cloakmcp?style=flat-square)](https://github.com/vutranHS/cloakmcp)
+[![Node.js 20+](https://img.shields.io/badge/node-20%2B-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Claude Code MCP](https://img.shields.io/badge/Claude%20Code-MCP-6B5B95?style=flat-square)](https://code.claude.com/)
 
 This repo includes a Claude Code MCP server named `cloakbrowser`.
 
