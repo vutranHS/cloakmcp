@@ -104,19 +104,31 @@ Approve the project MCP server if Claude Code asks.
 
 ### Option B: user scope, global on one machine
 
-Use this if you want the MCP server available in all projects on your machine.
+Use this if you want the MCP server and companion skill available in all projects on your machine.
+
+Install the MCP server and the global skill together.
 
 macOS/Linux:
 
 ```bash
-claude mcp add --scope user --transport stdio cloakbrowser -- node /absolute/path/to/repo/.claude/mcp/cloakbrowser/server.mjs
+repo=/absolute/path/to/repo
+npm install --prefix "$repo/.claude/mcp/cloakbrowser"
+mkdir -p ~/.claude/skills
+cp -R "$repo/.claude/skills/fetch-article" ~/.claude/skills/fetch-article
+claude mcp add --scope user --transport stdio cloakbrowser -- node "$repo/.claude/mcp/cloakbrowser/server.mjs"
 ```
 
 Windows PowerShell:
 
 ```powershell
-claude mcp add --scope user --transport stdio cloakbrowser -- node "C:\path\to\repo\.claude\mcp\cloakbrowser\server.mjs"
+$repo = "C:\path\to\repo"
+npm install --prefix "$repo\.claude\mcp\cloakbrowser"
+New-Item -ItemType Directory -Force -Path "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force "$repo\.claude\skills\fetch-article" "$HOME\.claude\skills\fetch-article"
+claude mcp add --scope user --transport stdio cloakbrowser -- node "$repo\.claude\mcp\cloakbrowser\server.mjs"
 ```
+
+The MCP exposes the tool. The global skill teaches Claude when to use it, including the Reddit `old.reddit.com` rewrite rule.
 
 Check:
 
@@ -190,7 +202,7 @@ Recommended for a shareable repo:
 .claude/mcp/cloakbrowser/server.mjs
 .claude/mcp/cloakbrowser/smoke-test.mjs
 .claude/skills/fetch-article/SKILL.md
-readmd.md
+README.md
 ```
 
 Do not commit:
